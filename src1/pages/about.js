@@ -35,5 +35,3 @@ export default class About extends PureComponent {
 
   }
 }
-
-
