@@ -2,16 +2,11 @@ import {
     ADD_NUMBER,
     SUB_NUMBER,
     INC_NUMBER,
-    DEC_NUMBER,
-    CHANGE_BANNERS,
-    CHANGE_RECOMMENDS
+    DEC_NUMBER
 
 } from './constants.js'
 const defaultState={
-    counter:0,
-    banners:[],
-    recommends:[]
-
+    counter:0
 }
 function reducer(state=defaultState,action){
     switch(action.type){
@@ -23,10 +18,6 @@ function reducer(state=defaultState,action){
             return {...state,counter:state.counter+1}
         case DEC_NUMBER:
             return {...state,counter:state.counter-1}
-        case CHANGE_BANNERS:
-            return {...state,banners:action.banners}
-        case CHANGE_RECOMMENDS:
-            return {...state,recommends:action.recommends}
         default:
             return state
     }

@@ -1,4 +1,3 @@
-import axios from 'axios'
 import {
     ADD_NUMBER,
     SUB_NUMBER,
@@ -50,16 +49,3 @@ export const changeRecommendsAction=(recommends)=>({
     recommends
 
 })
-//redux-thunk中定义的action函数
-export const getHomeMultidataAction=(dispatch,getState)=>{
-//    console.log("action函数中",dispatch)
-console.log(getState())
-  axios({
-      url:'http://123.207.32.32:8000/home/multidata'
-    }).then((res)=>{
-      const ret=res.data.data
-      // console.log(res.data.data)
-      dispatch(changeBannersAction(ret.banner.list))
-      dispatch(changeRecommendsAction(ret.recommend.list));
-    })
-}

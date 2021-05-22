@@ -3,21 +3,18 @@ import React, { PureComponent } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {
-    incAction,addAction,
-    getHomeMultidataAction
-    // changeBannersAction,changeRecommendsAction
+    incAction,addAction,changeBannersAction,changeRecommendsAction
 } from '../store/actionCreators'
 class Home extends PureComponent {
   componentDidMount(){
-    // axios({
-    //   url:'http://123.207.32.32:8000/home/multidata'
-    // }).then((res)=>{
-    //   const ret=res.data.data
-    //   // console.log(res.data.data)
-    //   this.props.changeBanners(ret.banner.list);
-    //   this.props.changeRecommends(ret.recommend.list);
-    // })
-    this.props.getHomeMultidata();
+    axios({
+      url:'http://123.207.32.32:8000/home/multidata'
+    }).then((res)=>{
+      const ret=res.data.data
+      // console.log(res.data.data)
+      this.props.changeBanners(ret.banner.list);
+      this.props.changeRecommends(ret.recommend.list);
+    })
   }
   render() {
     return (
@@ -40,8 +37,11 @@ const mapDispachToProps=dispatch=>({
   addNumber(num){
     dispatch(addAction(num))
   },
-  getHomeMultidata(){
-    dispatch( getHomeMultidataAction)
+  changeBanners(banners){
+   dispatch(changeBannersAction(banners))
+  },
+  changeRecommends(recommends){
+    dispatch(changeRecommendsAction(recommends))
   }
 })
 export default connect(mapStateToProps,mapDispachToProps)(Home);
